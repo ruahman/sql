@@ -11,7 +11,7 @@ endif
 
 .PHONY: build
 build:
-	if [[ "$(shell docker images -q $(name) 2> /dev/null)" == "" ]]; then \
+	@if [[ "$(shell docker images -q $(name) 2> /dev/null)" == "" ]]; then \
 		docker build -t $(name) .; \
 	else \
 		echo "image: $(name) is already setup"; \
@@ -19,7 +19,7 @@ build:
 
 .PHONY: network
 network:
-	if [[ "$(shell docker network inspect $(network) 2> /dev/null)" == "[]" ]]; then \
+	@if [[ "$(shell docker network inspect $(network) 2> /dev/null)" == "[]" ]]; then \
 		docker network create $(network); \
 	else \
 		echo "network: $(network) is already setup"; \
