@@ -1,0 +1,33 @@
+SELECT field1, field2, FROM table;
+
+SELECT * FROM person ORDER BY country_of_birth ASC;
+SELECT * FROM person ORDER BY country_of_birth DESC;
+SELECT * FROM person ORDER BY id, email ASC;
+
+SELECT DISTINCT country_of_birth FROM person ORDER BY country_of_birth ASC;
+
+SELECT * FROM person WHERE gender='Female';
+
+SELECT 1=1; -- true
+SELECT 1<>1; -- false
+
+SELECT * FROM person LIMIT 10;
+SELECT * FROM person OFFSET 5 LIMIT 10;
+-- official way
+SELECT * FROM person OFFSET 5 FETCH FIRST 5 ROW ONLY;
+
+SELECT * FROM person WHERE country_of_birth in ('China','Brazil','France') ORDER BY country_of_birth ASC;
+
+SELECT * FROM person WHERE date_of_birth BETWEEN DATE '1914-01-01' AND '2021-01-01';
+
+SELECT * FROM person WHERE email LIKE '%.com';
+SELECT * FROM person WHERE email LIKE '%google%';
+
+-- case insensitive
+SELECT * FROM person WHERE country_of_birth ILIKE '%br%';
+
+
+-- group by : group results by a column
+SELECT country_of_birth, COUNT(*) FROM person GROUP BY country_of_birth ORDER BY country_of_birth ASC;
+
+SELECT country_of_birth, COUNT(*) FROM person GROUP BY country_of_birth HAVING COUNT(*) > 5 ORDER BY country_of_birth ASC;
